@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
@@ -62,3 +63,9 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+=======
+# CAMP404
+untuk keperluan materi git di camp404
+
+## Materi Github
+>>>>>>> 46f14f97905ef60bc1d51617c96d307cddad69df
