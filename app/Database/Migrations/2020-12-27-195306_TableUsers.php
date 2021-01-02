@@ -22,7 +22,7 @@ class TableUsers extends Migration
 			],					
 			'password' => [
 				'type' => 'VARCHAR',
-				'constraint' => 50
+				'constraint' => 200
 			],
 			'role' => [
 				'type' => 'VARCHAR',

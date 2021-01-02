@@ -14,6 +14,25 @@ class AuthController extends BaseController
 		];
 		return view('auth/registrasi', $data);
 	}
+	public function rulesLogin(){
+		$data = [
+			'email' => [
+				'rules' 	=> 'required|valid_email',
+				'errors'=> [
+					'required' => 'Email tidak boleh kosong',
+					'valid_email' => 'Email tidak valid'
+				]
+			],
+			'password' => [
+				'rules'	=> 'required',
+				'errors' => [
+					'required' => 'Password harus diisi'
+				]
+			]
+
+		];
+		return $data;
+	}
 	public function rulesRegistrasi(){
 		$data = [
 			'nama' => [
@@ -63,6 +82,47 @@ class AuthController extends BaseController
 			return redirect()->to('/registrasi');
 		}else{
 			return redirect()->to('/registrasi')->withInput();
+		}
+	}
+
+	public function login(){
+		$data = [
+			'validation' => \Config\Services::validation()
+		];
+		return view('auth/login', $data);
+	}
+
+	public function prosesLogin(){
+		if ($this->validate($this->rulesLogin())){
+			$query 	= $this->model->where('email', $this->request->getPost('email'));
+			$count 	= $query->countAllResults(false);
+			$data	= $query->get()->getRow();
+
+			if($count > 0){
+				$hashPassword = $data->password;
+				
+				if (password_verify( $this->request->getPost('password'), $hashPassword )){
+					$session = [
+						'role'	=> $data->role,
+						'logged_in'	=> true
+					];
+
+					session()->set($session);
+
+					return redirect()->to(base_url('home'));
+				} else {
+					echo $hashPassword.'<br />';
+					echo die(password_hash($this->request->getPost('password'), PASSWORD_BCRYPT));
+					//return redirect()->to(base_url('login'))->with('login_failed', 'Username / password salah '.$this->request->getPost('password'));
+
+				}
+			} else {
+				return redirect()->to(base_url('login'))->with('login_failed', 'Username tidak ditemukan');
+
+			}
+		} else {
+			return redirect()->to(base_url('login'))->withInput();
+
 		}
 	}
 }
