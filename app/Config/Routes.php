@@ -34,6 +34,12 @@ $routes->get('/', 'MenuController::home');
 
 $routes->get('/home', 'MenuController::home');
 $routes->get('/data-siswa', 'MenuController::data_siswa');
+$routes->get('/data-siswa/tambah', 'MenuController::tambahSiswa');
+$routes->get('/data-siswa/edit/(:num)', 'MenuController::editSiswa/$1');
+$routes->post('/data-siswa/simpan', 'MenuController::simpanSiswa');
+$routes->put('/data-siswa/update/(:num)', 'MenuController::updateSiswa/$1');
+$routes->delete('/data-siswa/delete/(:num)', 'MenuController::deleteSiswa/$1');
+
 $routes->get('/info-kegiatan', 'MenuController::info_kegiatan');
 
 $routes->get('/registrasi', 'AuthController::registrasi');
@@ -41,8 +47,11 @@ $routes->post('/registrasi/simpan-registrasi', 'AuthController::simpanRegistrasi
 
 // Login
 $routes->get('/login', 'AuthController::login');
+$routes->get('/logout', function(){
+	session()->remove(['role','logged_in']);
+	return redirect()->to('/');
+});
 $routes->post('/login/proses-login', 'AuthController::prosesLogin');
-
 /**
  * --------------------------------------------------------------------
  * Additional Routing

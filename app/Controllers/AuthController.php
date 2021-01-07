@@ -106,14 +106,15 @@ class AuthController extends BaseController
 						'role'	=> $data->role,
 						'logged_in'	=> true
 					];
+					
 
 					session()->set($session);
 
 					return redirect()->to(base_url('home'));
 				} else {
-					echo $hashPassword.'<br />';
-					echo die(password_hash($this->request->getPost('password'), PASSWORD_BCRYPT));
-					//return redirect()->to(base_url('login'))->with('login_failed', 'Username / password salah '.$this->request->getPost('password'));
+					// echo $hashPassword.'<br />';
+					// echo die(password_hash($this->request->getPost('password'), PASSWORD_BCRYPT));
+					return redirect()->to(base_url('login'))->with('login_failed', 'Username / password salah '.$this->request->getPost('password'));
 
 				}
 			} else {
