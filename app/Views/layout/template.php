@@ -44,7 +44,7 @@
 	          <a class="nav-link active" aria-current="page" href="<?php echo base_url('home') ?>">Data</a>
 	        </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?php session()->remove(['role','logged_in']); ?>">Logout</a>
+            <a class="nav-link active" aria-current="page" href="<?php //session()->remove(['role','logged_in']); ?>">Logout</a>
           </li>
         <?php else: ?>
 	        <li class="nav-item">

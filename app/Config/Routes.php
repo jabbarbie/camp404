@@ -34,6 +34,9 @@ $routes->get('/', 'MenuController::home');
 
 $routes->get('/home', 'MenuController::home');
 $routes->get('/data-siswa', 'MenuController::data_siswa');
+$routes->get('/data-siswa/tambah', 'MenuController::tambahSiswa');
+$routes->post('/data-siswa/simpan', 'MenuController::simpanSiswa');
+
 $routes->get('/info-kegiatan', 'MenuController::info_kegiatan');
 
 $routes->get('/registrasi', 'AuthController::registrasi');
