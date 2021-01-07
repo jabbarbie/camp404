@@ -8,14 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.custom.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="<?= base_url()?>/css/bootstrap.custom.css" crossorigin="anonymous" />
 
     <style>
       * {box-sizing: border-box;}
     </style>
   </head>
   <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,7 @@
 	          <a class="nav-link active" aria-current="page" href="<?php echo base_url('home') ?>">Data</a>
 	        </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?php //session()->remove(['role','logged_in']); ?>">Logout</a>
+            <a class="nav-link active" aria-current="page" href="<?php echo base_url('logout') ?>">Logout</a>
           </li>
         <?php else: ?>
 	        <li class="nav-item">
@@ -65,7 +64,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="./js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="<?= base_url()?>/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

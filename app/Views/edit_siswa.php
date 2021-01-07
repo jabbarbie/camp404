@@ -28,23 +28,25 @@
 
 <!--  -->
 <div class="rrr mt-3">
-	<form action="<?= base_url('data-siswa/simpan')?>" method='post' autocomplete="on">
+	<form action="<?= base_url('data-siswa/update/'.$siswa['id'])?>" method='post' autocomplete="on">
 		<?= csrf_field() ?>
+		<input type="hidden" name="_method" value="PUT">
+
 		<!-- Nama -->
 		<div class="mb-3">
 			<label class="form-label">Nis</label>			
-			<input  type="text" class="form-control <?php echo $validation->hasError('nis')?'is-invalid':''; ?>  " name="nis" value="<?= old('nis') ?>"  />
-
+			<input  type="text" class="form-control  <?php echo $validation->hasError('nis')?'is-invalid':''; ?> " name="nis" value="<?= old('nis')??$siswa['nis'] ?>" />
 			<div class="form-text invalid-feedback">
 					<?= $validation->getError('nis') ?>	
 				</div>
+
 		</div>
 
 	<!-- Email	 -->
 		<div class="mb-3">
 			<label class="form-label">Nama Siswa</label>
 			
-				<input  type="text" class="form-control <?php echo $validation->hasError('nama')?'is-invalid':''; ?> " name="nama"  autocomplete="off" value="<?= old('nama') ?>" />
+				<input  type="text" class="form-control  <?php echo $validation->hasError('nama')?'is-invalid':''; ?> " name="nama" value="<?= old('nama')??$siswa['nama'] ?>" autocomplete="off" />
 				<div class="form-text invalid-feedback">
 					<?= $validation->getError('nama') ?>	
 				</div>
@@ -54,12 +56,10 @@
 		<div class="mb-3">
 			<label class="form-label">Tanggal Lahir</label>
 			
-				<input  type="date" class="form-control <?php echo $validation->hasError('tgl_lahir')?'is-invalid':''; ?>  " name="tgl_lahir" value="<?= old('tgl_lahir') ?>" />
-
-
+				<input  type="date" class="form-control  <?php echo $validation->hasError('tgl_lahir')?'is-invalid':''; ?> " name="tgl_lahir" value="<?= old('tgl_lahir')??$siswa['tgl_lahir'] ?>" />
 				<div class="form-text invalid-feedback">
 					<?= $validation->getError('tgl_lahir') ?>	
-				</div>
+				</div>				
 		</div>		
 
 		<!-- Submit -->

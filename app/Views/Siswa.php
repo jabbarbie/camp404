@@ -10,6 +10,8 @@
 		<th>Nama</th>
 		<th>NIS</th>
 		<th>Tanggal Lahir</th>
+		<td>Aksi</td>
+
 	</tr>
 	<?php foreach($siswa as $s):?>
 
